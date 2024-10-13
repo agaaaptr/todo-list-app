@@ -1,0 +1,291 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+:root {
+  --primary-color: #6c63ff;
+  --primary-light: #8f89ff;
+  --secondary-color: #f2f2f2;
+  --text-color: #232323;
+  --background-color: #ffffff;
+  --success-color: #4caf50;
+  --warning-color: #ffc107;
+  --danger-color: #ff6b6b;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f0f2f5;
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+.todo-container {
+  max-width: 600px;
+  width: 95%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgb(227, 227, 227);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: black;
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.add-todo {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  gap: 5px;
+}
+
+.add-todo input[type="text"],
+.add-todo input[type="date"],
+.add-todo select {
+  padding: 12px;
+  font-size: 14px;
+  border: 2px solid #c4c4c4;
+  border-radius: 20px;
+  font-family: "Poppins", sans-serif;
+  flex: 1 1 100%;
+}
+
+.add-todo input[type="text"] {
+  flex: 1 1 100%;
+  min-width: 200px;
+}
+
+.add-todo input[type="text"][placeholder="What needs to be done?"] {
+  padding: 15px 20px;
+  font-size: 16px;
+}
+
+.btn {
+  padding: 12px 20px;
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.add-btn {
+  background-color: #c4c4c4;
+  flex: 1 1 100%;
+}
+
+.add-btn:hover {
+  background-color: #17137a;
+  color: white;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.filters button {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.filters button.active {
+  background-color: #c4c4c4;
+  color: rgb(0, 0, 0);
+}
+
+.filters button:hover:not(.active) {
+  background-color: #c4c4c4;
+}
+
+.filters button.active:hover {
+  background-color: #c4c4c4;
+}
+
+.todo-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.todo-item {
+  background-color: whitesmoke;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 0 15px 15px 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  transition: all 0.3s ease;
+  position: relative; /* Untuk positioning */
+}
+
+.todo-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.todo-text {
+  flex-grow: 1;
+  margin-left: 10px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+.todo-date {
+  font-size: 12px;
+  color: #888;
+  margin-right: 10px;
+  font-family: "Poppins", sans-serif;
+  flex: 1 1 100%;
+  margin-top: 5px;
+}
+
+.remove-btn {
+  background-color: #c4c4c4;
+  padding: 6px 10px;
+  font-size: 12px;
+  margin-left: auto;
+}
+
+.remove-btn:hover {
+  background-color: #ae3737;
+  color: white;
+}
+
+.completed .todo-text {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.todo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  color: black;
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+}
+
+.clear-btn {
+  background-color: #c4c4c4;
+  font-size: 12px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.clear-btn:hover {
+  background-color: #ae3737;
+  color: white;
+}
+
+/* Garis warna kiri berdasarkan prioritas */
+.low {
+  border-left: 5px solid green;
+  transition: all 0.3s ease; /* Transisi untuk garis */
+}
+
+.medium {
+  border-left: 5px solid yellow;
+  transition: all 0.3s ease; /* Transisi untuk garis */
+}
+
+.high {
+  border-left: 5px solid red;
+  transition: all 0.3s ease; /* Transisi untuk garis */
+}
+
+/* Efek hover pada garis warna agar mengikuti elemen saat di-hover */
+.todo-item:hover .low,
+.todo-item:hover .medium,
+.todo-item:hover .high {
+  transform: translateY(-3px);
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #c4c4c4;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #c4c4c4;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .todo-container {
+    padding: 30px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .add-todo input[type="text"],
+  .add-todo input[type="date"],
+  .add-todo select {
+    flex: 1 1 auto;
+  }
+
+  .add-todo input[type="text"][placeholder="What needs to be done?"] {
+    flex: 1 1 70%;
+    max-width: 400px;
+  }
+
+  .add-btn {
+    flex: 0 0 auto;
+  }
+
+  .filters button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .todo-item {
+    padding: 15px;
+  }
+
+  .todo-text {
+    font-size: 16px;
+  }
+
+  .todo-date {
+    flex: 0 0 auto;
+    margin-top: 0;
+  }
+
+  .clear-btn {
+    width: auto;
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,61 @@
+<div class="todo-container">
+  <h1>My Todo List</h1>
+
+  <div class="add-todo">
+    <input
+      [(ngModel)]="newTodoText"
+      (keyup.enter)="addTodo()"
+      placeholder="What needs to be done?"
+    />
+    <input type="date" [(ngModel)]="newTodoDueDate" />
+    <select [(ngModel)]="newTodoPriority">
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+    </select>
+    <button (click)="addTodo()" class="btn add-btn">Add</button>
+  </div>
+
+  <div class="filters">
+    <button (click)="filter = 'all'" [class.active]="filter === 'all'">
+      All
+    </button>
+    <button (click)="filter = 'active'" [class.active]="filter === 'active'">
+      Active
+    </button>
+    <button
+      (click)="filter = 'completed'"
+      [class.active]="filter === 'completed'"
+    >
+      Completed
+    </button>
+  </div>
+
+  <ul class="todo-list">
+    <li
+      *ngFor="let todo of filteredTodos"
+      [class.completed]="todo.completed"
+      [ngClass]="todo.priority"
+    >
+      <div class="todo-item">
+        <input
+          type="checkbox"
+          [checked]="todo.completed"
+          (change)="toggleTodo(todo)"
+        />
+        <span class="todo-text">{{ todo.text }}</span>
+        <span class="todo-date" *ngIf="todo.dueDate">{{
+          todo.dueDate | date : "MMM d"
+        }}</span>
+        <button (click)="removeTodo(todo)" class="btn remove-btn">✕</button>
+      </div>
+    </li>
+  </ul>
+
+  <div class="todo-footer">
+    <span>{{ remainingTodos }} items left</span>
+    <button (click)="clearCompleted()" class="btn clear-btn">
+      Clear completed
+    </button>
+  </div>
+</div>
